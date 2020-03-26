@@ -6,10 +6,10 @@
     app:startDestination="@+id/navigation_dashboard">
 
     <fragment
-        android:id="@+id/navigation_info"
-        android:name="com.digitalink.c19.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_creation"
+        android:name="com.digitalink.c19.ui.account.AccountFragment"
+        android:label="@string/title_creation"
+        tools:layout="@layout/fragment_account" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -18,8 +18,8 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_creation"
-        android:name="com.digitalink.c19.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_info"
+        android:name="com.digitalink.c19.ui.HealthConstant.HealthConstantFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/fragment_health_constant" />
 </navigation>

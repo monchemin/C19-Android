@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+    tools:context=".ui.account.AccountFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_phone_number"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="true"
+                android:hint="@string/phone_number"
+                android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_localisation"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/input_phone_number">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/localisation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:hint="@string/localisation"
+                android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/top_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_localisation"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_age"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="0.5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:hint="@string/age"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_weight"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:hint="@string/weight"
+                    android:inputType="date"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/question_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_container"
+            android:layout_marginTop="@dimen/inter_field_margin"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/is_return_from_travel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/is_return_from_travel" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/is_diabetic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/is_diabetic" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/is_asthmatic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/is_asthmatic" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/is_hypertensive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/is_hypertensive" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/is_cardio_ischemic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/is_cardio_ischemic" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/is_smoker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/is_smoker" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/has_lung_disease"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/has_lung_disease" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/has_kidney_disease"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/has_kidney_disease" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_create_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question_container"
+            android:text="@string/btn_create_account">
+
+        </com.google.android.material.button.MaterialButton>
+    </RelativeLayout>
+</ScrollView>

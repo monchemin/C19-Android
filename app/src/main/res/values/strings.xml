@@ -6,4 +6,31 @@
     <string name="title_info">Info</string>
     <string name="title_creation">Create</string>
     <string name="btn_login_text">Connection</string>
+    <string name="localisation">Localisation</string>
+    <string name="age">Age</string>
+    <string name="weight">Weight</string>
+    <string name="btn_create_account">Create my account</string>
+    <string name="btn_send">Send</string>
+    <string name="temperature">Temperature</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="is_diabetic">Are you diabetic ?</string>
+    <string name="is_hypertensive">Are you hypertensive ?</string>
+    <string name="is_asthmatic">Are you asthmatic ?</string>
+    <string name="is_cardio_ischemic">Do you have cardio ischemic ?</string>
+    <string name="has_lung_disease">Do you have lung disease ?</string>
+    <string name="has_kidney_disease">Do you have kidney disease ?</string>
+    <string name="is_smoker">Are you smoker ?</string>
+    <string name="is_return_from_travel">Are you return from travel ?</string>
+
+    <string name="is_tired">Are you tired ?</string>
+    <string name="has_dry_cough">Do you have dry cough ?</string>
+    <string name="has_shortness_of_breath">Do you have shortness of breath ?</string>
+    <string name="has_been_in_contact_with_infected_person">Contact with infected person ?</string>
+    <string name="has_headache">Do you have headache ?</string>
+    <string name="has_runny_nose">Do you have runny nose ?</string>
+    <string name="has_nasal_congestion">Do you have nasal congestion ?</string>
+    <string name="has_sore_throat">Do you have sore throat ?</string>
+    <string name="has_muscle_pain">Do you have muscle pain ?</string>
+    <string name="has_diarrhea">Do you have diarrhea ?</string>
+
 </resources>

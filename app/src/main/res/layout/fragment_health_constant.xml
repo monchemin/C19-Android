@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+    android:layout_marginVertical="@dimen/inter_field_margin"
+    tools:context=".ui.HealthConstant.HealthConstantFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_temperature"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/temperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="true"
+                android:hint="@string/temperature"
+                android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/question_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_temperature"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/is_tired"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/is_tired" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/has_dry_cough"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/has_dry_cough" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/has_shortness_of_breath"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/has_shortness_of_breath" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/has_been_in_contact_with_infected_person"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/has_been_in_contact_with_infected_person" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/has_headache"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/has_headache" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/has_runny_nose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/has_runny_nose" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/has_nasal_congestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/has_nasal_congestion" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/has_sore_throat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/has_sore_throat" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/has_diarrhea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/has_diarrhea" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_send_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question_container"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/btn_send">
+
+        </com.google.android.material.button.MaterialButton>
+    </RelativeLayout>
+</ScrollView>
