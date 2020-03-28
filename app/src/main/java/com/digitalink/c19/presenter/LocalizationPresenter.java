@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class LocalizationPresenter {
 
-    @SerializedName("id_loc")
+    @SerializedName("id")
     public String id;
 
     @SerializedName("position")

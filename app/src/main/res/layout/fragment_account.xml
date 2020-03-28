@@ -22,7 +22,8 @@
                 android:layout_height="wrap_content"
                 android:cursorVisible="true"
                 android:hint="@string/phone_number"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:inputType="phone"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -63,7 +64,8 @@
                     android:layout_height="wrap_content"
                     android:cursorVisible="true"
                     android:hint="@string/age"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:inputType="number"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -79,8 +81,9 @@
                     android:layout_height="wrap_content"
                     android:cursorVisible="true"
                     android:hint="@string/weight"
-                    android:inputType="date"
-                    android:textSize="12sp" />
+                    android:inputType="numberDecimal"
+                    android:textSize="12sp"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
