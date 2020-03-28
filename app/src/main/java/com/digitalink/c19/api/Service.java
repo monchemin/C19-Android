@@ -1,7 +1,7 @@
 package com.digitalink.c19.api;
 
 import com.digitalink.c19.base.BasePresenter;
-import com.digitalink.c19.presenter.LocationsPresenter;
+import com.digitalink.c19.presenter.LocalizationPresenter;
 import com.digitalink.c19.utils.Configuration;
 
 import java.util.concurrent.TimeUnit;
@@ -38,6 +38,6 @@ public class Service {
 
     public interface EndPoint {
         @GET("/position/localizations")
-        Call<BasePresenter<LocationsPresenter>> locations();
+        Call<BasePresenter<LocalizationPresenter>> locations();
     }
 }

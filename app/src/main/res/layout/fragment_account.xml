@@ -26,18 +26,18 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_localisation"
+            android:id="@+id/input_localization"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_below="@id/input_phone_number">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/localisation"
+                android:id="@+id/localization"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:cursorVisible="false"
-                android:hint="@string/localisation"
+                android:hint="@string/localization"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +45,7 @@
             android:id="@+id/top_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input_localisation"
+            android:layout_below="@id/input_localization"
             android:baselineAligned="false"
             android:orientation="horizontal">
 

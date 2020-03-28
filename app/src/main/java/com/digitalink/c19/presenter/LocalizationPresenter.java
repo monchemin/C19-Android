@@ -2,7 +2,7 @@ package com.digitalink.c19.presenter;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LocationsPresenter {
+public class LocalizationPresenter {
 
     @SerializedName("id_loc")
     public String id;
