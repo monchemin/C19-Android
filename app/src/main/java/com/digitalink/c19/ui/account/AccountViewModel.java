@@ -4,16 +4,17 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class AccountViewModel extends ViewModel {
+import com.digitalink.c19.base.BasePresenter;
+import com.digitalink.c19.base.BaseViewModel;
+import com.digitalink.c19.presenter.LocationsPresenter;
+import com.google.gson.JsonObject;
 
-    private MutableLiveData<String> mText;
+import retrofit2.Call;
 
-    public AccountViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is account fragment");
-    }
+public class AccountViewModel extends BaseViewModel {
 
-    public LiveData<String> getText() {
-        return mText;
+    public MutableLiveData<BasePresenter<LocationsPresenter>> locations() {
+        Call<BasePresenter<LocationsPresenter>> call = api.locations();
+        return getData(call);
     }
 }
