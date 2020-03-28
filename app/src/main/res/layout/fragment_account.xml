@@ -92,8 +92,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/top_container"
-            android:layout_marginTop="@dimen/inter_field_margin"
-            android:orientation="vertical">
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:orientation="vertical"
+            android:background="@color/grey">
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/is_return_from_travel"
@@ -101,7 +102,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/is_return_from_travel" />
+                android:text="@string/is_return_from_travel"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/is_diabetic"
@@ -109,7 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/is_diabetic" />
+                android:text="@string/is_diabetic"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/is_asthmatic"
@@ -117,7 +120,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/is_asthmatic" />
+                android:text="@string/is_asthmatic"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/is_hypertensive"
@@ -125,7 +129,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/is_hypertensive" />
+                android:text="@string/is_hypertensive"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/is_cardio_ischemic"
@@ -133,7 +138,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/is_cardio_ischemic" />
+                android:text="@string/is_cardio_ischemic"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/is_smoker"
@@ -141,7 +147,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/is_smoker" />
+                android:text="@string/is_smoker"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_lung_disease"
@@ -149,7 +156,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/has_lung_disease" />
+                android:text="@string/has_lung_disease"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_kidney_disease"
@@ -157,7 +165,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/has_kidney_disease" />
+                android:text="@string/has_kidney_disease"
+                android:background="@android:color/white"/>
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -165,7 +174,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/question_container"
-            android:text="@string/btn_create_account">
+            android:text="@string/btn_create_account"
+            android:layout_marginTop="@dimen/activity_vertical_margin">
 
         </com.google.android.material.button.MaterialButton>
     </RelativeLayout>

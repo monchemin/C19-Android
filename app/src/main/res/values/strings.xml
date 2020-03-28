@@ -34,5 +34,7 @@
     <string name="has_diarrhea">Do you have diarrhea ?</string>
     <string name="localization_search_hint">Town or district</string>
 
+    <string name="key_file" translatable="false">key_file</string>
+
 
 </resources>

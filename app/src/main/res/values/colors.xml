@@ -6,5 +6,6 @@
     <color name="color1">#FFE500</color>
     <color name="color2">#FEF200</color>
     <color name="color3">#FEF900</color>
+    <color name="grey">#CCCCCC</color>
 
 </resources>

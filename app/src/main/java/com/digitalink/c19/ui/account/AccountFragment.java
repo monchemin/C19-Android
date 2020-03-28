@@ -7,18 +7,22 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.digitalink.c19.R;
+import com.digitalink.c19.base.BasePresenter;
 import com.digitalink.c19.presenter.AccountPresenter;
 import com.digitalink.c19.presenter.LocalizationPresenter;
 import com.digitalink.c19.ui.ActionChooseListener;
+import com.digitalink.c19.utils.Preference;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
@@ -142,6 +146,17 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
     }
 
     private void send() {
+        System.out.println("nyemo " + accountPresenter.toJson());
+
+        accountViewModel.addPatient(accountPresenter.toJson()).observe(this, result -> {
+            if (result.error == null && result.ID != null) {
+                System.out.println("nyemo " + result.ID);
+                Preference.setActive(getContext(), result.ID, accountPresenter.phoneNumber);
+            } else {
+                Toast.makeText(getContext(), "error occur", Toast.LENGTH_LONG).show();
+            }
+        });
+
 
     }
 

@@ -3,6 +3,7 @@ package com.digitalink.c19.api;
 import com.digitalink.c19.base.BasePresenter;
 import com.digitalink.c19.presenter.LocalizationPresenter;
 import com.digitalink.c19.utils.Configuration;
+import com.google.gson.JsonObject;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,7 +11,9 @@ import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public class Service {
 
@@ -39,5 +42,8 @@ public class Service {
     public interface EndPoint {
         @GET("/position/localizations")
         Call<BasePresenter<LocalizationPresenter>> locations();
+
+        @POST("/patient/add")
+        Call<BasePresenter<String>> addPatient(@Body JsonObject data);
     }
 }
