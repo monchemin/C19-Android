@@ -7,8 +7,6 @@ import com.digitalink.c19.base.BaseViewModel;
 import com.digitalink.c19.presenter.LocalizationPresenter;
 import com.google.gson.JsonObject;
 
-import org.json.JSONObject;
-
 import retrofit2.Call;
 
 public class AccountViewModel extends BaseViewModel {

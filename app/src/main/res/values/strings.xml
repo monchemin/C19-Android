@@ -36,5 +36,7 @@
 
     <string name="key_file" translatable="false">key_file</string>
 
+    <string name="gender">Gender</string>
+
 
 </resources>

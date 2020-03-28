@@ -7,18 +7,18 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.digitalink.c19.R;
-import com.digitalink.c19.base.BasePresenter;
 import com.digitalink.c19.presenter.AccountPresenter;
 import com.digitalink.c19.presenter.LocalizationPresenter;
 import com.digitalink.c19.ui.ActionChooseListener;
@@ -27,8 +27,6 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -75,6 +73,19 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
 
         SwitchCompat is_return_from_travel = root.findViewById(R.id.is_return_from_travel);
         is_return_from_travel.setOnCheckedChangeListener((buttonView, isChecked) -> accountPresenter.is_return_from_travel = isChecked);
+
+        AppCompatSpinner spinner = root.findViewById(R.id.gender_spinner);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                 accountPresenter.gender = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         MaterialButton button = root.findViewById(R.id.btn_create_account);
         localization.setOnClickListener(v -> {
@@ -140,18 +151,24 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
             weight.setError("weight");
             return;
         }
+        if (accountPresenter.gender.equals("")) {
+            Toast.makeText(getContext(), "gender", Toast.LENGTH_LONG).show();
+            return;
+        }
         accountPresenter.phoneNumber = localizationPresenter.country + phone;
         accountPresenter.ID = localizationPresenter.id;
         getLocation();
     }
 
     private void send() {
-        System.out.println("nyemo " + accountPresenter.toJson());
-
         accountViewModel.addPatient(accountPresenter.toJson()).observe(this, result -> {
+            if (result == null) {
+                Toast.makeText(getContext(), "error occur", Toast.LENGTH_LONG).show();
+                return;
+            }
             if (result.error == null && result.ID != null) {
-                System.out.println("nyemo " + result.ID);
                 Preference.setActive(getContext(), result.ID, accountPresenter.phoneNumber);
+                Toast.makeText(getContext(), "account create", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(getContext(), "error occur", Toast.LENGTH_LONG).show();
             }

@@ -11,6 +11,9 @@ public class AccountPresenter {
     @SerializedName("district_id")
     public String ID;
 
+    @SerializedName("gender")
+    public String gender;
+
     @SerializedName("age")
     public int age;
 

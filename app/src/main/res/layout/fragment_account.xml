@@ -88,10 +88,36 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/gender_container"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/top_container"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin">
+
+           <TextView
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:layout_weight="0.5"
+               android:text="@string/gender"
+               android:gravity="center_vertical"/>
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/gender_spinner"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:entries="@array/gender_arrays">
+            </androidx.appcompat.widget.AppCompatSpinner>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/question_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/top_container"
+            android:layout_below="@id/gender_container"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:orientation="vertical"
             android:background="@color/grey">
