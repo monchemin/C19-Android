@@ -38,5 +38,8 @@
 
     <string name="gender">Gender</string>
 
+    <string name="dashboard_init_text">Make connection by choosing the country code and enter your phone number. If you do not have been already registered please click create on the right bottom</string>
+    <string name="success_connection">Great! I recognize you number. Please click on info to send you daily health information.</string>
+
 
 </resources>

@@ -1,57 +1,41 @@
 package com.digitalink.c19.presenter;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
-public class HealthConstantPresenter {
-    @SerializedName("district_id")
-    public String ID;
+public class HealthConstantPresenter extends PresenterFactory {
+    @SerializedName("patient_id")
+    public String patientID;
 
-    @SerializedName("gender")
-    public String gender;
+    @SerializedName("temperature")
+    public double temperature;
 
-    @SerializedName("age")
-    public int age;
+    @SerializedName("is_tired")
+    public boolean is_tired;
 
-    @SerializedName("weight")
-    public double weight;
+    @SerializedName("has_dry_cough")
+    public boolean has_dry_cough;
 
-    @SerializedName("phone_number")
-    public String phoneNumber;
+    @SerializedName("has_shortness_of_breath")
+    public boolean has_shortness_of_breath;
 
-    @SerializedName("is_diabetic")
-    public boolean is_diabetic;
+    @SerializedName("has_been_in_contact_with_infected_person")
+    public boolean has_been_in_contact_with_infected_person;
 
-    @SerializedName("is_hypertensive")
-    public boolean is_hypertensive;
+    @SerializedName("has_headache")
+    public boolean has_headache;
 
-    @SerializedName("is_asthmatic")
-    public boolean is_asthmatic;
+    @SerializedName("has_runny_nose")
+    public boolean has_runny_nose;
 
-    @SerializedName("is_cardio_ischemic")
-    public boolean is_cardio_ischemic;
+    @SerializedName("has_nasal_congestion")
+    public boolean has_nasal_congestion;
 
-    @SerializedName("has_lung_disease")
-    public boolean has_lung_disease;
+    @SerializedName("has_sore_throat")
+    public boolean has_sore_throat;
 
-    @SerializedName("has_kidney_disease")
-    public boolean has_kidney_disease;
+    @SerializedName("has_muscle_pain")
+    public boolean has_muscle_pain;
 
-    @SerializedName("is_smoker")
-    public boolean is_smoker;
-
-    @SerializedName("is_return_from_travel")
-    public boolean is_return_from_travel;
-
-    @SerializedName("longitude")
-    public double longitude;
-
-    @SerializedName("latitude")
-    public double latitude;
-
-    public JsonObject toJson() {
-        String jsonInString = new Gson().toJson(this);
-        return new Gson().fromJson(jsonInString, JsonObject.class);
-    }
+    @SerializedName("has_diarrhea")
+    public boolean has_diarrhea;
 }

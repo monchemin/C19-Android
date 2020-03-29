@@ -1,19 +1,17 @@
 package com.digitalink.c19.ui.HealthConstant;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-public class HealthConstantViewModel extends ViewModel {
+import com.digitalink.c19.base.BasePresenter;
+import com.digitalink.c19.base.BaseViewModel;
+import com.google.gson.JsonObject;
 
-    private MutableLiveData<String> mText;
+import retrofit2.Call;
 
-    public HealthConstantViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is constant fragment");
-    }
+public class HealthConstantViewModel extends BaseViewModel {
 
-    public LiveData<String> getText() {
-        return mText;
+    public MutableLiveData<BasePresenter<Void>> addHealthConstant(JsonObject data) {
+        Call<BasePresenter<Void>> call = api.addHealthConstant(data);
+        return getData(call);
     }
 }

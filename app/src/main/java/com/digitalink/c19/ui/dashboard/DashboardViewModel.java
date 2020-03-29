@@ -1,19 +1,26 @@
 package com.digitalink.c19.ui.dashboard;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+import com.digitalink.c19.base.BasePresenter;
+import com.digitalink.c19.base.BaseViewModel;
+import com.digitalink.c19.presenter.CountryPresenter;
+import com.digitalink.c19.presenter.LoginPresenter;
+import com.google.gson.JsonObject;
 
-    private MutableLiveData<String> mText;
+import java.util.List;
 
-    public DashboardViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+import retrofit2.Call;
+
+public class DashboardViewModel extends BaseViewModel {
+
+    public MutableLiveData<BasePresenter<LoginPresenter>> connection(JsonObject data) {
+        Call<BasePresenter<LoginPresenter>> call = api.connection(data);
+        return getData(call);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public MutableLiveData<BasePresenter<List<CountryPresenter>>> getCountries() {
+        Call<BasePresenter<List<CountryPresenter>>> call = api.countries();
+        return getData(call);
     }
 }

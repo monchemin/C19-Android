@@ -2,9 +2,6 @@ package com.digitalink.c19.base;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BasePresenter<T> {
 
     @SerializedName("ID")
@@ -14,6 +11,6 @@ public class BasePresenter<T> {
     public String error;
 
     @SerializedName("response")
-    public List<T> response = new ArrayList<>();
+    public T response;
 
 }

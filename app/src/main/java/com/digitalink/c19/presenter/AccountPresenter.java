@@ -1,13 +1,8 @@
 package com.digitalink.c19.presenter;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class AccountPresenter {
+public class AccountPresenter extends PresenterFactory {
     @SerializedName("district_id")
     public String ID;
 
@@ -53,8 +48,4 @@ public class AccountPresenter {
     @SerializedName("latitude")
     public double latitude;
 
-    public JsonObject toJson() {
-        String jsonInString = new Gson().toJson(this);
-        return new Gson().fromJson(jsonInString, JsonObject.class);
-    }
 }

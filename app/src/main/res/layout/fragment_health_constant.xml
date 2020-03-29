@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-    android:layout_marginVertical="@dimen/inter_field_margin"
+    android:layout_marginVertical="10dp"
     tools:context=".ui.HealthConstant.HealthConstantFragment">
 
     <RelativeLayout
@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/input_temperature"
             android:layout_marginTop="15dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/grey">
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/is_tired"
@@ -40,7 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/is_tired" />
+                android:text="@string/is_tired"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_dry_cough"
@@ -48,7 +50,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/has_dry_cough" />
+                android:text="@string/has_dry_cough"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_shortness_of_breath"
@@ -56,7 +59,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/has_shortness_of_breath" />
+                android:text="@string/has_shortness_of_breath"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_been_in_contact_with_infected_person"
@@ -64,7 +68,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/has_been_in_contact_with_infected_person" />
+                android:text="@string/has_been_in_contact_with_infected_person"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_headache"
@@ -72,7 +77,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/has_headache" />
+                android:text="@string/has_headache"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_runny_nose"
@@ -80,7 +86,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/has_runny_nose" />
+                android:text="@string/has_runny_nose"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_nasal_congestion"
@@ -88,7 +95,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/has_nasal_congestion" />
+                android:text="@string/has_nasal_congestion"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_sore_throat"
@@ -96,7 +104,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/has_sore_throat" />
+                android:text="@string/has_sore_throat"
+                android:background="@android:color/white"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/has_muscle_pain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/inter_field_margin"
+                android:checked="false"
+                android:text="@string/has_muscle_pain"
+                android:background="@android:color/white"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_diarrhea"
@@ -104,7 +122,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
-                android:text="@string/has_diarrhea" />
+                android:text="@string/has_diarrhea"
+                android:background="@android:color/white"/>
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton

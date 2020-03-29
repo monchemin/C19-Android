@@ -1,10 +1,13 @@
 package com.digitalink.c19.api;
 
 import com.digitalink.c19.base.BasePresenter;
+import com.digitalink.c19.presenter.CountryPresenter;
 import com.digitalink.c19.presenter.LocalizationPresenter;
+import com.digitalink.c19.presenter.LoginPresenter;
 import com.digitalink.c19.utils.Configuration;
 import com.google.gson.JsonObject;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -41,9 +44,18 @@ public class Service {
 
     public interface EndPoint {
         @GET("/position/localizations")
-        Call<BasePresenter<LocalizationPresenter>> locations();
+        Call<BasePresenter<List<LocalizationPresenter>>> locations();
+
+        @GET("/position/countries")
+        Call<BasePresenter<List<CountryPresenter>>> countries();
 
         @POST("/patient/add")
-        Call<BasePresenter<String>> addPatient(@Body JsonObject data);
+        Call<BasePresenter<Void>> addPatient(@Body JsonObject data);
+
+        @POST("/patient/constant/add")
+        Call<BasePresenter<Void>> addHealthConstant(@Body JsonObject data);
+
+        @POST("/patient/connect")
+        Call<BasePresenter<LoginPresenter>> connection(@Body JsonObject data);
     }
 }

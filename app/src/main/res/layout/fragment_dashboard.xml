@@ -9,36 +9,60 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/img"
+            android:src="@drawable/image_grey"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal" />
+
         <LinearLayout
             android:id="@+id/login_container"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
+            android:layout_height="60dp"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:orientation="horizontal">
-
+            android:orientation="horizontal"
+            android:layout_below="@id/img">
             <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/country_spinner"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.3">
+                android:layout_weight="0.4">
 
             </androidx.appcompat.widget.AppCompatSpinner>
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_number"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7">
+                android:layout_weight="0.6">
 
             </com.google.android.material.textfield.TextInputEditText>
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/login_container"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
             android:text="@string/btn_login_text">
 
         </com.google.android.material.button.MaterialButton>
+
+        <TextView
+            android:id="@+id/dashboard_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_login"
+            android:text="@string/dashboard_init_text"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="13sp"
+            android:layout_margin="@dimen/activity_horizontal_margin">
+        </TextView>
     </RelativeLayout>
 </ScrollView>

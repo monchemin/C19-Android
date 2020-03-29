@@ -7,17 +7,19 @@ import com.digitalink.c19.base.BaseViewModel;
 import com.digitalink.c19.presenter.LocalizationPresenter;
 import com.google.gson.JsonObject;
 
+import java.util.List;
+
 import retrofit2.Call;
 
 public class AccountViewModel extends BaseViewModel {
 
-    public MutableLiveData<BasePresenter<LocalizationPresenter>> locations() {
-        Call<BasePresenter<LocalizationPresenter>> call = api.locations();
+    public MutableLiveData<BasePresenter<List<LocalizationPresenter>>> locations() {
+        Call<BasePresenter<List<LocalizationPresenter>>> call = api.locations();
         return getData(call);
     }
 
-    public MutableLiveData<BasePresenter<String>> addPatient(JsonObject data) {
-        Call<BasePresenter<String>> call = api.addPatient(data);
+    public MutableLiveData<BasePresenter<Void>> addPatient(JsonObject data) {
+        Call<BasePresenter<Void>> call = api.addPatient(data);
         return getData(call);
     }
 }

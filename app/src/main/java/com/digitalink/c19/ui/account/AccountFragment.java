@@ -16,9 +16,11 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.digitalink.c19.R;
+import com.digitalink.c19.base.BasePresenter;
 import com.digitalink.c19.presenter.AccountPresenter;
 import com.digitalink.c19.presenter.LocalizationPresenter;
 import com.digitalink.c19.ui.ActionChooseListener;
@@ -162,18 +164,17 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
 
     private void send() {
         accountViewModel.addPatient(accountPresenter.toJson()).observe(this, result -> {
-            if (result == null) {
+            if(result == null) {
                 Toast.makeText(getContext(), "error occur", Toast.LENGTH_LONG).show();
                 return;
             }
-            if (result.error == null && result.ID != null) {
+            if (result.ID == null) {
+                Toast.makeText(getContext(), "error occur", Toast.LENGTH_LONG).show();
+            } else {
                 Preference.setActive(getContext(), result.ID, accountPresenter.phoneNumber);
                 Toast.makeText(getContext(), "account create", Toast.LENGTH_LONG).show();
-            } else {
-                Toast.makeText(getContext(), "error occur", Toast.LENGTH_LONG).show();
             }
         });
-
 
     }
 
