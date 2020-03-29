@@ -100,10 +100,8 @@ public class LocalizationSearchDialog extends DialogFragment {
     }
 
     private void loadItem(int position) {
-        System.out.println("nyemo " + position);
         LocalizationPresenter item = adapter.getItem(position);
         if (item != null) {
-            System.out.println("nyemo " + item.id);
             onInputListener.sendInput(item.id);
         } else {
             onInputListener.sendInput("");

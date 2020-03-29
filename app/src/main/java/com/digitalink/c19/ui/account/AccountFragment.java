@@ -1,6 +1,7 @@
 package com.digitalink.c19.ui.account;
 
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Patterns;
@@ -8,20 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.digitalink.c19.R;
-import com.digitalink.c19.base.BasePresenter;
 import com.digitalink.c19.presenter.AccountPresenter;
+import com.digitalink.c19.presenter.CountryPresenter;
 import com.digitalink.c19.presenter.LocalizationPresenter;
 import com.digitalink.c19.ui.ActionChooseListener;
 import com.digitalink.c19.utils.Preference;
@@ -32,7 +34,9 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AccountFragment extends Fragment implements ActionChooseListener {
 
@@ -41,7 +45,12 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
     private TextInputEditText localization, phoneNumber, age, weight;
     private AccountPresenter accountPresenter = new AccountPresenter();
     private LocalizationPresenter localizationPresenter;
+    private List<CountryPresenter> countryPresenters;
+    private AppCompatSpinner spinner;
+    private String selectedCountry;
 
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         accountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
@@ -76,11 +85,11 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
         SwitchCompat is_return_from_travel = root.findViewById(R.id.is_return_from_travel);
         is_return_from_travel.setOnCheckedChangeListener((buttonView, isChecked) -> accountPresenter.is_return_from_travel = isChecked);
 
-        AppCompatSpinner spinner = root.findViewById(R.id.gender_spinner);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        AppCompatSpinner gspinner = root.findViewById(R.id.gender_spinner);
+        gspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                 accountPresenter.gender = parent.getItemAtPosition(position).toString();
+                accountPresenter.gender = parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -97,22 +106,66 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
 
         });
         button.setOnClickListener(v -> validate());
+        spinner = root.findViewById(R.id.country_spinner);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedCountry = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         return root;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        accountViewModel.locations().observe(getViewLifecycleOwner(), results -> {
-            if (results.response != null) {
-                presenters = results.response;
-            }
-        });
+        if (presenters == null) {
+            accountViewModel.locations().observe(getViewLifecycleOwner(), results -> {
+                if (results.response != null) {
+                    presenters = results.response;
+                }
+            });
+        }
+
+        if (countryPresenters == null) {
+            accountViewModel.getCountries().observe(this, result -> {
+                if (result != null) {
+                    countryPresenters = result.response;
+                    fillCountrySpinner();
+                }
+            });
+        }
     }
 
+    private void fillCountrySpinner() {
+        List<String> list = new ArrayList<>();
+        selectedCountry = "code";
+        list.add(selectedCountry);
+        for (CountryPresenter c : countryPresenters) {
+            list.add(c.ID);
+        }
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(getContext(),
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void showDialog() {
+
+        if (selectedCountry.equals("code")) {
+            return;
+        }
+        List<LocalizationPresenter> selected = presenters.stream().filter(c -> c.country.equals(selectedCountry)).collect(Collectors.toList());
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        LocalizationSearchDialog newFragment = new LocalizationSearchDialog(presenters);
+        LocalizationSearchDialog newFragment = new LocalizationSearchDialog(selected);
         newFragment.setListener(this);
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -132,6 +185,11 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
     }
 
     private void validate() {
+        if (selectedCountry.equals("code")) {
+            phoneNumber.setError("Missing code");
+            return;
+        }
+
         String phone = phoneNumber.getText().toString();
         if (phone.isEmpty() || !Patterns.PHONE.matcher(phone).matches()) {
             phoneNumber.setError("phone");
@@ -164,7 +222,7 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
 
     private void send() {
         accountViewModel.addPatient(accountPresenter.toJson()).observe(this, result -> {
-            if(result == null) {
+            if (result == null) {
                 Toast.makeText(getContext(), "error occur", Toast.LENGTH_LONG).show();
                 return;
             }

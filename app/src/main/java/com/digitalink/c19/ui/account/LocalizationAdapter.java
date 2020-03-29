@@ -61,7 +61,7 @@ public class LocalizationAdapter extends RecyclerView.Adapter<LocalizationAdapte
     }
 
     public LocalizationPresenter getItem(int position) {
-        return dataSet != null ? dataSet.get(position) : null;
+        return dataSet != null && dataSet.size() != 0 ? dataSet.get(position) : null;
 
     }
 
