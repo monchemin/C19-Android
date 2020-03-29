@@ -71,7 +71,7 @@ public class HealthConstantFragment extends Fragment {
         }
         presenter.patientID = ID;
         try {
-            presenter.temperature = Double.parseDouble(temperature.getText().toString());
+            presenter.temperature = Float.parseFloat(temperature.getText().toString());
         } catch (NumberFormatException e) {
             temperature.setError("weight");
             return;

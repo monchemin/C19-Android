@@ -1,13 +1,18 @@
 package com.digitalink.c19.presenter;
 
+import com.digitalink.c19.R;
+import com.digitalink.c19.utils.DateUtils;
 import com.google.gson.annotations.SerializedName;
 
 public class HealthConstantPresenter extends PresenterFactory {
     @SerializedName("patient_id")
     public String patientID;
 
+    @SerializedName("date_time")
+    public String dateTime;
+
     @SerializedName("temperature")
-    public double temperature;
+    public float temperature;
 
     @SerializedName("is_tired")
     public boolean is_tired;
@@ -38,4 +43,8 @@ public class HealthConstantPresenter extends PresenterFactory {
 
     @SerializedName("has_diarrhea")
     public boolean has_diarrhea;
+
+    public String formatDate(String format) {
+        return  DateUtils.dateToString(DateUtils.fromISO8601UTC(dateTime), format);
+    }
 }
