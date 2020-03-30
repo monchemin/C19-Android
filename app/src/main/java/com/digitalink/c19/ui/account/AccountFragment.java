@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
+import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -32,6 +32,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
     private List<CountryPresenter> countryPresenters;
     private AppCompatSpinner spinner;
     private String selectedCountry;
+    private ScrollView rootLayout;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -55,6 +57,7 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
                              ViewGroup container, Bundle savedInstanceState) {
         accountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
         View root = inflater.inflate(R.layout.fragment_account, container, false);
+        rootLayout = root.findViewById(R.id.scrollView);
 
         localization = root.findViewById(R.id.localization);
         phoneNumber = root.findViewById(R.id.phone_number);
@@ -186,33 +189,33 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
 
     private void validate() {
         if (selectedCountry.equals("code")) {
-            phoneNumber.setError("Missing code");
+            phoneNumber.setError(getString(R.string.missing_code));
             return;
         }
 
         String phone = phoneNumber.getText().toString();
         if (phone.isEmpty() || !Patterns.PHONE.matcher(phone).matches()) {
-            phoneNumber.setError("phone");
+            phoneNumber.setError(getString(R.string.missing_field));
             return;
         }
         if (localizationPresenter == null) {
-            localization.setError("location");
+            localization.setError(getString(R.string.missing_field));
             return;
         }
         try {
             accountPresenter.age = Integer.parseInt(age.getText().toString());
         } catch (NumberFormatException e) {
-            age.setError("age");
+            age.setError(getString(R.string.missing_field));
             return;
         }
         try {
             accountPresenter.weight = Double.parseDouble(weight.getText().toString());
         } catch (NumberFormatException e) {
-            weight.setError("weight");
+            weight.setError(getString(R.string.missing_field));
             return;
         }
         if (accountPresenter.gender.equals("")) {
-            Toast.makeText(getContext(), "gender", Toast.LENGTH_LONG).show();
+            makeSnackBar(getString(R.string.error_creation));
             return;
         }
         accountPresenter.phoneNumber = localizationPresenter.country + phone;
@@ -223,17 +226,25 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
     private void send() {
         accountViewModel.addPatient(accountPresenter.toJson()).observe(this, result -> {
             if (result == null) {
-                Toast.makeText(getContext(), "error occur", Toast.LENGTH_LONG).show();
+               makeSnackBar(getString(R.string.error_creation));
                 return;
             }
             if (result.ID == null) {
-                Toast.makeText(getContext(), "error occur", Toast.LENGTH_LONG).show();
+                makeSnackBar(getString(R.string.error_creation));
             } else {
                 Preference.setActive(getContext(), result.ID, accountPresenter.phoneNumber);
-                Toast.makeText(getContext(), "account create", Toast.LENGTH_LONG).show();
+                makeSnackBar(getString(R.string.successful_creation));
             }
         });
 
+    }
+
+    private void makeSnackBar(String text) {
+        Snackbar snackbar = Snackbar.make(rootLayout, text, Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(R.string.close, v -> {
+            snackbar.dismiss();
+        });
+        snackbar.show();
     }
 
     private void getLocation() {

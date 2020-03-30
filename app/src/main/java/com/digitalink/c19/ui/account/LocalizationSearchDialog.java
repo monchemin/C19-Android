@@ -81,11 +81,7 @@ public class LocalizationSearchDialog extends DialogFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        //  try {
-        //      onInputListener = (ActionChooseListener) getActivity();
-        //   } catch (ClassCastException e) {
-        //      Log.e(TAG, "onAttach: " + e.getMessage());
-        // }
+
     }
 
     public void setListener(ActionChooseListener action) {

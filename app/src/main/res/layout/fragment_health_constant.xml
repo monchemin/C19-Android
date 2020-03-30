@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
     android:layout_marginVertical="10dp"
-    tools:context=".ui.HealthConstant.HealthConstantFragment">
+    tools:context=".ui.HealthConstant.HealthConstantFragment"
+    android:id="@+id/scrollView">
 
     <RelativeLayout
         android:layout_width="match_parent"

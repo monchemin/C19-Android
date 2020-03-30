@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
@@ -15,6 +15,7 @@ import com.digitalink.c19.R;
 import com.digitalink.c19.presenter.HealthConstantPresenter;
 import com.digitalink.c19.utils.Preference;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class HealthConstantFragment extends Fragment {
@@ -22,11 +23,13 @@ public class HealthConstantFragment extends Fragment {
     private HealthConstantViewModel healthConstantViewModel;
     private TextInputEditText temperature;
     private HealthConstantPresenter presenter = new HealthConstantPresenter();
+    private ScrollView rootLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         healthConstantViewModel = ViewModelProviders.of(this).get(HealthConstantViewModel.class);
         View root = inflater.inflate(R.layout.fragment_health_constant, container, false);
+        rootLayout = root.findViewById(R.id.scrollView);
         temperature = root.findViewById(R.id.temperature);
 
         SwitchCompat is_tired = root.findViewById(R.id.is_tired);
@@ -66,27 +69,35 @@ public class HealthConstantFragment extends Fragment {
     private void validateAndSend() {
         String ID = Preference.GetID(getContext());
         if (ID.equals("")) {
-            Toast.makeText(getContext(), "You must be connected before. please go to dashboard and connect", Toast.LENGTH_LONG).show();
+           makeSnackBar(getString(R.string.connected_before));
             return;
         }
         presenter.patientID = ID;
         try {
             presenter.temperature = Float.parseFloat(temperature.getText().toString());
         } catch (NumberFormatException e) {
-            temperature.setError("weight");
+            temperature.setError(getString(R.string.missing_field));
             return;
         }
 
         healthConstantViewModel.addHealthConstant(presenter.toJson()).observe(this, result -> {
             if (result == null) {
-                Toast.makeText(getContext(), "error occur", Toast.LENGTH_LONG).show();
+                makeSnackBar(getString(R.string.info_sent_error));
                 return;
             }
             if (result.ID == null) {
-                Toast.makeText(getContext(), "error occur", Toast.LENGTH_LONG).show();
+                makeSnackBar(getString(R.string.info_sent_error));
             } else {
-                Toast.makeText(getContext(), "great! information sent. it is recommand to do it at leace twice a day ", Toast.LENGTH_LONG).show();
+                makeSnackBar(getString(R.string.info_sent_success));
             }
         });
+    }
+
+    private void makeSnackBar(String text) {
+        Snackbar snackbar = Snackbar.make(rootLayout, text, Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(R.string.close, v -> {
+            snackbar.dismiss();
+        });
+        snackbar.show();
     }
 }

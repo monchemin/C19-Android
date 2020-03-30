@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
@@ -53,11 +55,13 @@ public class DashboardFragment extends Fragment {
     private List<String> xAxisLabel = new ArrayList<>();
     private MaterialButton button;
     private boolean isConnected;
+    ScrollView rootLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel = ViewModelProviders.of(this).get(DashboardViewModel.class);
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        rootLayout = root.findViewById(R.id.scrollView);
         spinner = root.findViewById(R.id.country_spinner);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -70,6 +74,7 @@ public class DashboardFragment extends Fragment {
 
             }
         });
+
         mChart = root.findViewById(R.id.chart);
         mChart.setNoDataText(getString(R.string.chart_no_data));
         phoneNumber = root.findViewById(R.id.phone_number);
@@ -94,6 +99,7 @@ public class DashboardFragment extends Fragment {
         Preference.Disconnect(getContext());
         mChart.clear();
         mChart.setNoDataText(getString(R.string.chart_no_data));
+        isConnected = false;
     }
 
     @Override
@@ -109,10 +115,19 @@ public class DashboardFragment extends Fragment {
         }
         if (!Preference.GetPhoneNumber(getContext()).equals("")) {
             mChart.clear();
+            isConnected = true;
             connectionPresenter.phoneNumber = Preference.GetPhoneNumber(getContext());
             connection();
         }
 
+    }
+
+    private void makeSnackBar(String text) {
+        Snackbar snackbar = Snackbar.make(rootLayout, text, Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(R.string.close, v -> {
+            snackbar.dismiss();
+        });
+        snackbar.show();
     }
 
     private void fillCountrySpinner() {
@@ -130,12 +145,12 @@ public class DashboardFragment extends Fragment {
 
     private void validateAndConnect() {
         if (selectedCountry.equals("code")) {
-            dashboardInfo.setText("Missing code");
+            phoneNumber.setError(getString(R.string.missing_code));
             return;
         }
         String phone = phoneNumber.getText().toString();
         if (phone.isEmpty() || !Patterns.PHONE.matcher(phone).matches()) {
-            phoneNumber.setError("phone");
+            phoneNumber.setError(getString(R.string.missing_field));
             return;
         }
 
@@ -147,47 +162,41 @@ public class DashboardFragment extends Fragment {
 
         dashboardViewModel.connection(connectionPresenter.toJson()).observe(this, result -> {
             if (result == null) {
-                dashboardInfo.setText("error occur");
+                makeSnackBar(getString(R.string.connection_error));
                 return;
             }
             if (result.response == null) {
-                Toast.makeText(getContext(), "error occur one", Toast.LENGTH_LONG).show();
+                makeSnackBar(getString(R.string.connection_error));
                 return;
             }
-            if (result.response.ID == null) {
-                Toast.makeText(getContext(), "error occur two", Toast.LENGTH_LONG).show();
+            if (result.response.ID.equals("")) {
+                makeSnackBar(getString(R.string.connection_error));
                 return;
             }
             healthConstantPresenters = result.response.dailyInformation;
-            dashboardInfo.setText(getString(R.string.success_connection));
-            dashboardInfo.setTextColor(Color.GREEN);
             button.setText(R.string.disconnection);
-            isConnected = true;
-            Preference.setActive(getContext(), result.response.ID, result.response.phoneNumber);
-            setData();
+            if (!isConnected) {
+                makeSnackBar(getString(R.string.success_connection));
+                Preference.setActive(getContext(), result.response.ID, result.response.phoneNumber);
+                isConnected = true;
+            }
+            if (result.response.dailyInformation != null) {
+                setData();
+                dashboardInfo.setText("");
+            }
         });
     }
 
     public void renderData() {
-      /*  LimitLine llXAxis = new LimitLine(10f, "Index 10");
-        llXAxis.setLineWidth(4f);
-        llXAxis.enableDashedLine(10f, 10f, 0f);
-        llXAxis.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
-        llXAxis.setTextSize(10f); */
 
         XAxis xAxis = mChart.getXAxis();
         xAxis.enableGridDashedLine(10f, 10f, 0f);
-        //xAxis.setAxisMaximum(10f);
-        //xAxis.setAxisMinimum(0f);
         xAxis.setDrawLimitLinesBehindData(true);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawLabels(true);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
         xAxis.setTextSize(11);
-        //xAxis.setSpaceMin(10);
         xAxis.setGranularityEnabled(true);
-        // xAxis.setGranularity(5);
-
 
         LimitLine ll1 = new LimitLine(37.5f);
         ll1.setLineWidth(2f);
@@ -233,27 +242,24 @@ public class DashboardFragment extends Fragment {
         for (HealthConstantPresenter hp : this.healthConstantPresenters) {
             values.add(new Entry(index, hp.temperature));
             xAxisLabel.add(hp.formatDate(getString(R.string.date_format)));
+            if (index == 5) {
+                break;
+            }
             index++;
         }
 
         LineDataSet set1;
         set1 = new LineDataSet(values, getString(R.string.chart_legend));
         set1.setDrawIcons(false);
-        // set1.enableDashedLine(10f, 5f, 0f);
-        //set1.enableDashedHighlightLine(10f, 5f, 0f);
         set1.setColor(ContextCompat.getColor(getContext(), R.color.color1));
         set1.setCircleColor(R.color.color1);
         set1.setLineWidth(1f);
         set1.setCircleRadius(3f);
         set1.setDrawCircleHole(false);
         set1.setValueTextSize(9f);
-        // set1.setDrawFilled(true);
         set1.setFormLineWidth(1f);
-        // set1.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
         set1.setFormSize(15.f);
 
-
-        //set1.setFillColor(R.color.color1);
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(set1);
         LineData data = new LineData(dataSets);
