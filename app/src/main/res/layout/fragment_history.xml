@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+    android:layout_marginVertical="10dp"
+    tools:context=".ui.healthConstant.HealthConstantFragment"
+    android:id="@+id/scrollView">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/history_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey"/>
+
+</ScrollView>

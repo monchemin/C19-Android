@@ -1,4 +1,4 @@
-package com.digitalink.c19.ui.HealthConstant;
+package com.digitalink.c19.ui.healthConstant;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

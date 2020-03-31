@@ -8,7 +8,7 @@ import java.util.TimeZone;
 
 public class DateUtils {
     public static String dateToString(Date mDate, String sFormat) {
-        if (mDate == null ) return "";
+        if (mDate == null || sFormat.equals("")) return "";
         SimpleDateFormat format = new SimpleDateFormat(sFormat);
         return format.format(mDate);
     }

@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">C19</string>
-    <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="title_info">Info</string>
     <string name="title_creation">Create</string>
+    <string name="title_history">History</string>
+
+    <string name="label_dashboard">Dashboard</string>
+    <string name="label_info">Send Health information</string>
+    <string name="label_creation">Create Account</string>
+    <string name="label_history">Account History</string>
+
     <string name="btn_login_text">Connection</string>
     <string name="localization">Localization</string>
     <string name="age">Age</string>
@@ -45,6 +50,7 @@
 
 
     <string name="date_format">MM-dd:HH</string>
+    <string name="date_format2">EEE, d MMM yyyy HH:mm</string>
     <string name="connected">Your are connected</string>
     <string name="disconnection">Disconnection</string>
     <string name="close">Close</string>

@@ -8,18 +8,24 @@
     <fragment
         android:id="@+id/navigation_creation"
         android:name="com.digitalink.c19.ui.account.AccountFragment"
-        android:label="@string/title_creation"
+        android:label="@string/label_creation"
         tools:layout="@layout/fragment_account" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.digitalink.c19.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/label_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_info"
-        android:name="com.digitalink.c19.ui.HealthConstant.HealthConstantFragment"
-        android:label="@string/title_info"
+        android:name="com.digitalink.c19.ui.healthConstant.HealthConstantFragment"
+        android:label="@string/label_info"
         tools:layout="@layout/fragment_health_constant" />
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.digitalink.c19.ui.history.HistoryFragment"
+        android:label="@string/label_history"
+        tools:layout="@layout/fragment_history" />
 </navigation>

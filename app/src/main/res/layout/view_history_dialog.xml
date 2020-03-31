@@ -1,49 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-    android:layout_marginVertical="10dp"
-    tools:context=".ui.healthConstant.HealthConstantFragment"
-    android:id="@+id/scrollView">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:background="@color/grey">
 
-    <RelativeLayout
+
+    <LinearLayout
+        android:id="@+id/close"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentTop="true"
+        >
+        <ImageButton
+            android:id="@+id/button_close"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@android:color/white"
+            app:srcCompat="@drawable/ic_back_arrow" />
+    </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_temperature"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+     <LinearLayout
+         android:id="@+id/temperature_container"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:layout_below="@+id/close">
+         <TextView
+             android:id="@+id/date_time"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="0.6" />
+         <TextView
+             android:id="@+id/temperature"
+             android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="0.4" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/temperature"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:cursorVisible="true"
-                android:hint="@string/temperature"
-                android:textSize="12sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+     </LinearLayout>
 
         <LinearLayout
             android:id="@+id/question_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input_temperature"
+            android:layout_below="@id/temperature_container"
             android:layout_marginTop="15dp"
             android:orientation="vertical"
-            android:background="@color/grey">
+           android:layout_marginStart="10dp">
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/is_tired"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/inter_field_margin"
-                android:checked="false"
+                android:checked="true"
                 android:text="@string/is_tired"
-                android:background="@android:color/white"/>
+                android:textColor="@android:color/black"
+                android:clickable="false"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_dry_cough"
@@ -52,7 +70,8 @@
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
                 android:text="@string/has_dry_cough"
-                android:background="@android:color/white"/>
+                android:textColor="@android:color/black"
+                android:clickable="false"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_shortness_of_breath"
@@ -61,7 +80,8 @@
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
                 android:text="@string/has_shortness_of_breath"
-                android:background="@android:color/white"/>
+                android:textColor="@android:color/black"
+                android:clickable="false"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_been_in_contact_with_infected_person"
@@ -70,7 +90,8 @@
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
                 android:text="@string/has_been_in_contact_with_infected_person"
-                android:background="@android:color/white"/>
+                android:textColor="@android:color/black"
+                android:clickable="false"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_headache"
@@ -79,7 +100,8 @@
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
                 android:text="@string/has_headache"
-                android:background="@android:color/white"/>
+                android:textColor="@android:color/black"
+                android:clickable="false"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_runny_nose"
@@ -88,7 +110,8 @@
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
                 android:text="@string/has_runny_nose"
-                android:background="@android:color/white"/>
+                android:textColor="@android:color/black"
+                android:clickable="false"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_nasal_congestion"
@@ -97,7 +120,8 @@
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
                 android:text="@string/has_nasal_congestion"
-                android:background="@android:color/white"/>
+                android:textColor="@android:color/black"
+                android:clickable="false"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_sore_throat"
@@ -106,7 +130,8 @@
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
                 android:text="@string/has_sore_throat"
-                android:background="@android:color/white"/>
+                android:textColor="@android:color/black"
+                android:clickable="false"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_muscle_pain"
@@ -115,7 +140,8 @@
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
                 android:text="@string/has_muscle_pain"
-                android:background="@android:color/white"/>
+                android:textColor="@android:color/black"
+                android:clickable="false"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/has_diarrhea"
@@ -124,17 +150,7 @@
                 android:layout_marginBottom="@dimen/inter_field_margin"
                 android:checked="false"
                 android:text="@string/has_diarrhea"
-                android:background="@android:color/white"/>
+                android:textColor="@android:color/black"
+                android:clickable="false"/>
         </LinearLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_send_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/question_container"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:text="@string/btn_send">
-
-        </com.google.android.material.button.MaterialButton>
-    </RelativeLayout>
-</ScrollView>
+</RelativeLayout>
