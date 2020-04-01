@@ -14,6 +14,7 @@
     <string name="localization">Localization</string>
     <string name="age">Age</string>
     <string name="weight">Weight</string>
+    <string name="height">Height</string>
     <string name="btn_create_account">Create my account</string>
     <string name="btn_send">Send</string>
     <string name="temperature">Temperature</string>
@@ -55,7 +56,7 @@
     <string name="disconnection">Disconnection</string>
     <string name="close">Close</string>
     <string name="successful_creation">Your account has been successful created. Go to info to start sending your daily health information. </string>
-    <string name="error_creation">Errors occur during your account creation. I you have already use this phone number go do dashboard and make connection. Other wise retry later.</string>
+    <string name="error_creation">Errors occur during your account creation. Retry later or Make connection</string>
     <string name="gender_error">Please choose your Gender</string>
     <string name="missing_field">Must be provided</string>
     <string name="missing_code">choose country code</string>

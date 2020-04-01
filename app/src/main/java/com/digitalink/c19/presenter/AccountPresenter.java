@@ -12,6 +12,9 @@ public class AccountPresenter extends PresenterFactory {
     @SerializedName("age")
     public int age;
 
+    @SerializedName("height")
+    public int height;
+
     @SerializedName("weight")
     public double weight;
 

@@ -43,7 +43,7 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
 
     private AccountViewModel accountViewModel;
     private List<LocalizationPresenter> presenters;
-    private TextInputEditText localization, phoneNumber, age, weight;
+    private TextInputEditText localization, phoneNumber, age, weight, height;
     private AccountPresenter accountPresenter = new AccountPresenter();
     private LocalizationPresenter localizationPresenter;
     private List<CountryPresenter> countryPresenters;
@@ -63,6 +63,7 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
         phoneNumber = root.findViewById(R.id.phone_number);
         age = root.findViewById(R.id.age);
         weight = root.findViewById(R.id.weight);
+        height = root.findViewById(R.id.height);
 
         SwitchCompat is_diabetic = root.findViewById(R.id.is_diabetic);
         is_diabetic.setOnCheckedChangeListener((buttonView, isChecked) -> accountPresenter.is_diabetic = isChecked);
@@ -198,32 +199,45 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
             phoneNumber.setError(getString(R.string.missing_field));
             return;
         }
+
         if (localizationPresenter == null) {
             localization.setError(getString(R.string.missing_field));
             return;
         }
+
         try {
             accountPresenter.age = Integer.parseInt(age.getText().toString());
         } catch (NumberFormatException e) {
             age.setError(getString(R.string.missing_field));
             return;
         }
+
         try {
             accountPresenter.weight = Double.parseDouble(weight.getText().toString());
         } catch (NumberFormatException e) {
             weight.setError(getString(R.string.missing_field));
             return;
         }
-        if (accountPresenter.gender.equals("")) {
-            makeSnackBar(getString(R.string.error_creation));
+
+        try {
+            accountPresenter.height = Integer.parseInt(height.getText().toString());
+        } catch (NumberFormatException e) {
+            height.setError(getString(R.string.missing_field));
             return;
         }
+
+        if (accountPresenter.gender.equals("")) {
+            makeSnackBar(getString(R.string.gender_error));
+            return;
+        }
+
         accountPresenter.phoneNumber = localizationPresenter.country + phone;
         accountPresenter.ID = localizationPresenter.id;
         getLocation();
     }
 
     private void send() {
+
         accountViewModel.addPatient(accountPresenter.toJson()).observe(this, result -> {
             if (result == null) {
                makeSnackBar(getString(R.string.error_creation));
