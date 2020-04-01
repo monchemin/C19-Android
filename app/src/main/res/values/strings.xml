@@ -21,7 +21,7 @@
     <string name="is_diabetic">Are you diabetic ?</string>
     <string name="is_hypertensive">Are you hypertensive ?</string>
     <string name="is_asthmatic">Are you asthmatic ?</string>
-    <string name="is_cardio_ischemic">Do you have cardio ischemic ?</string>
+    <string name="is_cardio_ischemic">Do you have cardiac ischemia ?</string>
     <string name="has_lung_disease">Do you have lung disease ?</string>
     <string name="has_kidney_disease">Do you have kidney disease ?</string>
     <string name="is_smoker">Are you smoker ?</string>

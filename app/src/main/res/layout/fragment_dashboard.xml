@@ -23,7 +23,7 @@
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/country_spinner"
                 android:layout_width="0dp"
-                android:layout_weight="0.4"
+                android:layout_weight="35"
                 android:autofillHints="code"
                 android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
                 android:layout_height="?attr/dropdownListPreferredItemHeight"
@@ -33,7 +33,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6">
+                android:layout_weight="65">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/phone_number"

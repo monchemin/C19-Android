@@ -18,33 +18,35 @@
     <string name="btn_send">Envoyé</string>
     <string name="temperature">Temperature</string>
     <string name="phone_number">Numéro de Telephone</string>
-    <string name="is_diabetic">Are you diabetic ?</string>
-    <string name="is_hypertensive">Are you hypertensive ?</string>
-    <string name="is_asthmatic">Are you asthmatic ?</string>
-    <string name="is_cardio_ischemic">Do you have cardio ischemic ?</string>
-    <string name="has_lung_disease">Do you have lung disease ?</string>
-    <string name="has_kidney_disease">Do you have kidney disease ?</string>
-    <string name="is_smoker">Are you smoker ?</string>
-    <string name="is_return_from_travel">Are you return from travel ?</string>
-
-    <string name="is_tired">Are you tired ?</string>
-    <string name="has_dry_cough">Do you have dry cough ?</string>
-    <string name="has_shortness_of_breath">Do you have shortness of breath ?</string>
-    <string name="has_been_in_contact_with_infected_person">Contact with infected person ?</string>
-    <string name="has_headache">Do you have headache ?</string>
-    <string name="has_runny_nose">Do you have runny nose ?</string>
-    <string name="has_nasal_congestion">Do you have nasal congestion ?</string>
-    <string name="has_sore_throat">Do you have sore throat ?</string>
-    <string name="has_muscle_pain">Do you have muscle pain ?</string>
-    <string name="has_diarrhea">Do you have diarrhea ?</string>
     <string name="localization_search_hint">Town or district</string>
+
+
+    <string name="is_diabetic">Etes vous diabétique ?</string>
+    <string name="is_hypertensive">Avez-vous de l\'hypertension artérielle?</string>
+    <string name="is_asthmatic">Are you asthmatic ?</string>
+    <string name="is_cardio_ischemic">Avez-vous une ischémie cardiaque ?</string>
+    <string name="has_lung_disease">Avez vous une maladie pulmonaire ?</string>
+    <string name="has_kidney_disease">Avez-vous une insuffisance rénale ?</string>
+    <string name="is_smoker">Etes-vous fumeur ?</string>
+    <string name="is_return_from_travel">Etes vous de retour d\'un voyage?</string>
+
+    <string name="is_tired">Avez-vous une fatigie inhabituelle ?</string>
+    <string name="has_dry_cough">Avez-vous une toux sèche ?</string>
+    <string name="has_shortness_of_breath">Avez-vous un manque de souffle inhabituelle ?</string>
+    <string name="has_been_in_contact_with_infected_person">Etiez-vous en contact avec une personne infectée ?</string>
+    <string name="has_headache">Ressentez vous un mal de tête inhabituelle ?</string>
+    <string name="has_runny_nose">Avez-vous le nez qui coule ?</string>
+    <string name="has_nasal_congestion">Avez-vous de la  congestion ?</string>
+    <string name="has_sore_throat">Avez vous mal la gorge ?</string>
+    <string name="has_muscle_pain">Avez-vous des douleurs musculaires ?</string>
+    <string name="has_diarrhea">Avez-vous la diarrhée ?</string>
 
     <string name="key_file" translatable="false">key_file</string>
 
     <string name="gender">Genre</string>
     <string name="chart_legend">Temperature</string>
     <string name="chart_maximum">Maximum</string>
-    <string name="chart_no_data">Make connection to display your health history</string>
+    <string name="chart_no_data">Connectez vous pour afficher votre historique</string>
 
     <string name="dashboard_init_text">Make connection by choosing the country code and enter your phone number. If you do not have been already registered please click create on the right bottom</string>
 
@@ -56,13 +58,13 @@
     <string name="close">Fermer</string>
     <string name="successful_creation">Your account has been successful created. Go to info to start sending your daily health information. </string>
     <string name="error_creation">Errors occur during your account creation. I you have already use this phone number go do dashboard and make connection. Other wise retry later.</string>
-    <string name="gender_error">Please choose your Gender</string>
-    <string name="missing_field">Must be provided</string>
-    <string name="missing_code">choose country code</string>
-    <string name="connected_before">You must be connected before. please go to dashboard and connect</string>
-    <string name="info_sent_error">Errors occur during processing. retry later</string>
-    <string name="info_sent_success">Great ! your information has been successful sent. Go to dashboard</string>
-    <string name="connection_error">Errors occur during connection. retry later or create account</string>
-    <string name="success_connection">Connected. Please click on info to send you daily health information.</string>
+    <string name="gender_error">Choisir le genre</string>
+    <string name="missing_field">Doit être rempli</string>
+    <string name="missing_code">Choisir le code pays</string>
+    <string name="connected_before">Vous devez vous connectez avant sur le tableau de bord</string>
+    <string name="info_sent_error"> Une erreur est survenue lors du traitement. Ressayez plus tard</string>
+    <string name="info_sent_success">Vos informations ont été bien envoyées.</string>
+    <string name="connection_error">Une erreur est survenue lors de la connexion. Ressayer ou creer votre compte</string>
+    <string name="success_connection">Connecté. Cliquez sur info pour envoyer vos infomations.</string>
 
 </resources>
