@@ -11,27 +11,42 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_temperature"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <LinearLayout
+            android:id="@+id/temp_container"
             android:layout_width="match_parent"
-            android:layout_height="50dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_temperature"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.8">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/temperature"
-                android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/temperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="true"
+                    android:hint="@string/temperature"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:cursorVisible="true"
-                android:hint="@string/temperature"
-                android:textSize="12sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_weight="0.1"
+                android:text="°C"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="3dp"/>
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/question_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/input_temperature"
+            android:layout_below="@id/temp_container"
             android:layout_marginTop="15dp"
             android:orientation="vertical"
             android:background="@color/grey">

@@ -57,7 +57,8 @@
                 android:layout_height="wrap_content"
                 android:cursorVisible="false"
                 android:hint="@string/localization"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:layout_marginEnd="15dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -103,6 +104,11 @@
                     android:textSize="12sp"
                     />
             </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kg"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
 
         <LinearLayout

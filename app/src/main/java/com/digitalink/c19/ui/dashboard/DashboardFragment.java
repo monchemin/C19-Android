@@ -38,6 +38,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DashboardFragment extends Fragment {
@@ -194,7 +195,7 @@ public class DashboardFragment extends Fragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawLabels(true);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
-        xAxis.setTextSize(11);
+        xAxis.setTextSize(8);
         xAxis.setGranularityEnabled(true);
 
         LimitLine ll1 = new LimitLine(37.5f);
@@ -213,11 +214,12 @@ public class DashboardFragment extends Fragment {
         leftAxis.removeAllLimitLines();
         leftAxis.addLimitLine(ll1);
         leftAxis.addLimitLine(ll2);
-        leftAxis.setAxisMaximum(40f);
-        leftAxis.setAxisMinimum(30f);
+        //leftAxis.setAxisMaximum(50f);
+        //leftAxis.setAxisMinimum(35f);
         leftAxis.enableGridDashedLine(10f, 10f, 0f);
         leftAxis.setDrawZeroLine(false);
         leftAxis.setDrawLimitLinesBehindData(false);
+
 
         mChart.getAxisRight().setEnabled(false);
         mChart.getDescription().setEnabled(false);
@@ -235,15 +237,20 @@ public class DashboardFragment extends Fragment {
     private void setData() {
 
         ArrayList<Entry> values = new ArrayList<>();
-        int index = 1;
         xAxisLabel.clear();
+        ArrayList<HealthConstantPresenter> displayValues = new ArrayList<>();
 
-        for (HealthConstantPresenter hp : this.healthConstantPresenters) {
-            values.add(new Entry(index, hp.temperature));
-            xAxisLabel.add(hp.formatDate(getString(R.string.date_format)));
-            if (index == 5) {
+        for (int i = 0; i < this.healthConstantPresenters.size(); i++) {
+            displayValues.add(healthConstantPresenters.get(i));
+            if (i == 4) {
                 break;
             }
+        }
+        Collections.reverse(displayValues);
+        int index = 0;
+        for (HealthConstantPresenter hp : displayValues) {
+            values.add(new Entry(index, hp.temperature));
+            xAxisLabel.add(hp.formatDate(getString(R.string.date_format)));
             index++;
         }
 
@@ -266,6 +273,5 @@ public class DashboardFragment extends Fragment {
         mChart.notifyDataSetChanged();
         renderData();
     }
-
 
 }
