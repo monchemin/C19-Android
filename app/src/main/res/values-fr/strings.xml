@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">WINcovid-19</string>
     <string name="title_dashboard">Bord</string>
     <string name="title_info">Info</string>
     <string name="title_creation">Compte</string>
@@ -15,6 +14,8 @@
     <string name="age">Age</string>
     <string name="weight">Poids</string>
     <string name="height">Taille</string>
+    <string name="weight_hint">Poids(Kg)</string>
+    <string name="height_hint">Taille(Cm)</string>
     <string name="btn_create_account">Créer mon compte</string>
     <string name="btn_send">Envoyé</string>
     <string name="temperature">Temperature</string>
@@ -22,23 +23,23 @@
     <string name="localization_search_hint">Town or district</string>
 
 
-    <string name="is_diabetic">Etes vous diabétique ?</string>
+    <string name="is_diabetic">Êtes-vous diabétique ?</string>
     <string name="is_hypertensive">Avez-vous de l\'hypertension artérielle?</string>
-    <string name="is_asthmatic">Are you asthmatic ?</string>
+    <string name="is_asthmatic">Êtes-vous asthmatique ?</string>
     <string name="is_cardio_ischemic">Avez-vous une ischémie cardiaque ?</string>
-    <string name="has_lung_disease">Avez vous une maladie pulmonaire ?</string>
+    <string name="has_lung_disease">Avez-vous une maladie pulmonaire ?</string>
     <string name="has_kidney_disease">Avez-vous une insuffisance rénale ?</string>
-    <string name="is_smoker">Etes-vous fumeur ?</string>
+    <string name="is_smoker">Êtes-vous fumeur ?</string>
     <string name="is_return_from_travel">Etes vous de retour d\'un voyage?</string>
 
-    <string name="is_tired">Avez-vous une fatigie inhabituelle ?</string>
+    <string name="is_tired">Avez-vous une fatigue inhabituelle ?</string>
     <string name="has_dry_cough">Avez-vous une toux sèche ?</string>
-    <string name="has_shortness_of_breath">Avez-vous un manque de souffle inhabituelle ?</string>
+    <string name="has_shortness_of_breath">Avez-vous un manque de souffle inhabituel ?</string>
     <string name="has_been_in_contact_with_infected_person">Etiez-vous en contact avec une personne infectée ?</string>
-    <string name="has_headache">Ressentez vous un mal de tête inhabituelle ?</string>
+    <string name="has_headache">Ressentez-vous un mal de tête inhabituel ?</string>
     <string name="has_runny_nose">Avez-vous le nez qui coule ?</string>
-    <string name="has_nasal_congestion">Avez-vous de la  congestion ?</string>
-    <string name="has_sore_throat">Avez vous mal la gorge ?</string>
+    <string name="has_nasal_congestion">Avez-vous une congestion ?</string>
+    <string name="has_sore_throat">Avez-vous mal à la gorge ?</string>
     <string name="has_muscle_pain">Avez-vous des douleurs musculaires ?</string>
     <string name="has_diarrhea">Avez-vous la diarrhée ?</string>
 
@@ -49,15 +50,15 @@
     <string name="chart_maximum">Maximum</string>
     <string name="chart_no_data">Connectez vous pour afficher votre historique</string>
 
-    <string name="dashboard_init_text">Make connection by choosing the country code and enter your phone number. If you do not have been already registered please click create on the right bottom</string>
+    <string name="dashboard_init_text">Connectez vous en choisissant votre code pays et fournir votre numéro de téléphone. Si vous n\'avez pas encore unc compte cliquez sur Compte pour en créer.</string>
 
 
     <string name="date_format">dd-MM:HH</string>
     <string name="date_format2">EEE, d MMM yyyy HH:mm</string>
-    <string name="connected">Your are connected</string>
+    <string name="connected">Vous êtes connectè</string>
     <string name="disconnection">Déconnexion</string>
     <string name="close">Fermer</string>
-    <string name="successful_creation">Your account has been successful created. Go to info to start sending your daily health information. </string>
+    <string name="successful_creation">Votre compte a été bien créé. Commencez par envoyer les informations. </string>
     <string name="error_creation">Une erreur est survenue lors de la création du compte. Ressayez plus tard</string>
     <string name="gender_error">Choisir le genre</string>
     <string name="missing_field">Doit être rempli</string>
