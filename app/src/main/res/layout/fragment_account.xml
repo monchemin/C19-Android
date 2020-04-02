@@ -16,7 +16,6 @@
             android:id="@+id/phone_container"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:orientation="horizontal"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true">
@@ -56,9 +55,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:cursorVisible="false"
+
                 android:hint="@string/localization"
-                android:textSize="12sp"
-                android:layout_marginEnd="15dp"/>
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
@@ -92,45 +91,39 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="0.5">
+                android:layout_weight="0.5"
+                android:layout_marginEnd="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/weight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:cursorVisible="true"
-                    android:hint="@string/weight"
+                    android:hint="@string/weight_hint"
                     android:inputType="numberDecimal"
                     android:textSize="12sp"
                     />
             </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kg"
-                android:layout_gravity="center_vertical"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_height"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="0.5">
+                android:layout_weight="0.5"
+               >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/height"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:cursorVisible="true"
-                    android:hint="@string/height"
+                    android:hint="@string/height_hint"
                     android:inputType="number"
                     android:textSize="12sp"
                     />
             </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="cm"
-                android:layout_gravity="center_vertical"/>
+
         </LinearLayout>
 
         <LinearLayout

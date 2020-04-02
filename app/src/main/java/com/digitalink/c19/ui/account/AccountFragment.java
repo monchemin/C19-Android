@@ -107,8 +107,14 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
             if (presenters != null) {
                 showDialog();
             }
-
         });
+
+        localization.setOnFocusChangeListener((v, hasFocus) -> {
+            if (presenters != null && hasFocus) {
+                showDialog();
+            }
+        });
+
         button.setOnClickListener(v -> validate());
         spinner = root.findViewById(R.id.country_spinner);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -165,6 +171,7 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
     private void showDialog() {
 
         if (selectedCountry.equals("code")) {
+            makeSnackBar(getString(R.string.missing_code));
             return;
         }
         List<LocalizationPresenter> selected = presenters.stream().filter(c -> c.country.equals(selectedCountry)).collect(Collectors.toList());
@@ -178,6 +185,7 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
 
     @Override
     public void sendInput(String input) {
+        localization.setText(null);
         for (LocalizationPresenter presenter : presenters) {
             if (presenter.id.equals(input)) {
                 localization.setText(presenter.position);
@@ -200,7 +208,7 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
             return;
         }
 
-        if (localizationPresenter == null) {
+        if (localizationPresenter == null || localization.getText() == null) {
             localization.setError(getString(R.string.missing_field));
             return;
         }
@@ -240,7 +248,7 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
 
         accountViewModel.addPatient(accountPresenter.toJson()).observe(this, result -> {
             if (result == null) {
-               makeSnackBar(getString(R.string.error_creation));
+                makeSnackBar(getString(R.string.error_creation));
                 return;
             }
             if (result.ID == null) {
