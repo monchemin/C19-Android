@@ -107,7 +107,7 @@ public class DashboardFragment extends Fragment {
         super.onResume();
         if (countryPresenters != null) {
             dashboardViewModel.getCountries().observe(this, result -> {
-                if (result != null) {
+                if (result != null && result.response != null) {
                     countryPresenters = result.response;
                     fillCountrySpinner();
                 }
