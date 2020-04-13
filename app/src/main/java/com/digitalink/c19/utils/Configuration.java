@@ -8,7 +8,7 @@ public class Configuration {
 
         switch (BuildConfig.FLAVOR) {
             default:
-                return "http://ec2-34-221-176-88.us-west-2.compute.amazonaws.com:8080";
+                return "http://3.217.233.250:8080";
         }
     }
 }

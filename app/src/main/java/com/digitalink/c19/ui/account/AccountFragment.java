@@ -137,15 +137,17 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
         super.onResume();
         if (presenters == null) {
             accountViewModel.locations().observe(getViewLifecycleOwner(), results -> {
-                if (results.response != null) {
+                if (results != null && results.response != null) {
                     presenters = results.response;
+                } else {
+                    makeSnackBar(getString(R.string.connection_error));
                 }
             });
         }
 
         if (countryPresenters == null) {
             accountViewModel.getCountries().observe(this, result -> {
-                if (result != null) {
+                if (result != null && result.response != null) {
                     countryPresenters = result.response;
                     fillCountrySpinner();
                 }
