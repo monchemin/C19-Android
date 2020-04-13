@@ -65,8 +65,8 @@ public class HistoryFragment extends Fragment {
     private void connection() {
 
         historyViewModel.connection(connectionPresenter.toJson()).observe(this, result -> {
-            if (result == null) {
-                makeSnackBar(getString(R.string.connection_error));
+            if (result.error.equals("500")) {
+                makeSnackBar(getString(R.string.server_error));
                 return;
             }
             if (result.response == null) {

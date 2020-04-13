@@ -66,6 +66,7 @@
     <string name="info_sent_error">Errors occur during processing. retry later</string>
     <string name="info_sent_success">Great ! your information has been successful sent. Go to dashboard</string>
     <string name="connection_error">Errors occur during connection. retry later or create account</string>
+    <string name="server_error">Errors occur during connection to server. retry later </string>
     <string name="success_connection">Connected. Please click on info to send you daily health information.</string>
 
 </resources>

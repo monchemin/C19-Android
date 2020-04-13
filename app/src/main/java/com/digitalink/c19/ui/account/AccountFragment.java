@@ -137,10 +137,12 @@ public class AccountFragment extends Fragment implements ActionChooseListener {
         super.onResume();
         if (presenters == null) {
             accountViewModel.locations().observe(getViewLifecycleOwner(), results -> {
-                if (results != null && results.response != null) {
+                if (results.error.equals("500")) {
+                    makeSnackBar(getString(R.string.server_error));
+                    return;
+                }
+                if (results.response != null) {
                     presenters = results.response;
-                } else {
-                    makeSnackBar(getString(R.string.connection_error));
                 }
             });
         }

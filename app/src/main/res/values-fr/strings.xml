@@ -67,6 +67,7 @@
     <string name="info_sent_error"> Une erreur est survenue lors du traitement. Ressayez plus tard</string>
     <string name="info_sent_success">Vos informations ont été bien envoyées.</string>
     <string name="connection_error">Une erreur est survenue lors de la connexion. Ressayer ou creer votre compte</string>
+    <string name="server_error">Une erreur est survenue lors de la connexion au serveur</string>
     <string name="success_connection">Connecté. Cliquez sur info pour envoyer vos infomations.</string>
 
 </resources>

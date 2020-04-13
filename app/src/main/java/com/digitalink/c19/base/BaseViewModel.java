@@ -25,6 +25,7 @@ public abstract class BaseViewModel extends ViewModel {
             public void onFailure(Call<BasePresenter<T>> call, Throwable t) {
                 t.printStackTrace();
                 BasePresenter<T> err = new BasePresenter<>();
+                err.error = "500";
                 data.setValue(err);
             }
         });
